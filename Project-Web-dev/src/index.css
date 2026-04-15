@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand-brown: #3d2b1f;
+    --color-brand-orange: #f48c66;
+    --color-brand-orange-hover: #e07b55;
+    --color-brand-green: #5a7a55;
+    --color-brand-green-light: #d4e4d4;
+    --color-brand-green-hover: #4a6645;
+
+    --animate-heartbeat: heartbeat 1s infinite;
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-gradient-x: gradient-x 3s ease infinite;
+
+    @keyframes heartbeat {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.1);
+        }
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes gradient-x {
+
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+}
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    @apply font-sans text-brand-brown bg-white;
+}
+
+#root {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Custom Utilities that might be missing */
+@utility perspective-1000 {
+    perspective: 1000px;
+}
+
+@utility preserve-3d {
+    transform-style: preserve-3d;
+}
+
+@utility rotate-y-180 {
+    transform: rotateY(180deg);
+}
+
+@utility backface-hidden {
+    backface-visibility: hidden;
+}
+
+/* Scrollbar Hiding */
+@utility scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Custom Scrollbar */
+@utility custom-scrollbar {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #e5e7eb;
+        border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #d1d5db;
+    }
+}
+
+/* Global Component Classes */
+@layer components {
+    .btn {
+        @apply px-8 py-3 rounded-xl font-medium transition-all shadow-sm active:scale-95 cursor-pointer inline-flex items-center justify-center gap-2;
+    }
+
+    .btn-primary {
+        @apply bg-brand-orange text-white hover:bg-brand-orange-hover shadow-orange-200 shadow-lg;
+    }
+
+    .btn-secondary {
+        @apply bg-[#e5e7e5] text-brand-brown hover:bg-[#d1d3d1];
+    }
+
+    .btn-success {
+        @apply bg-brand-green text-white hover:bg-brand-green-hover shadow-lg shadow-green-900/20;
+    }
+
+    .btn-icon-circle {
+        @apply p-2 hover:bg-gray-100 rounded-full transition-colors;
+    }
+
+    .heading-serif {
+        @apply font-serif font-bold text-brand-brown leading-tight;
+    }
+
+    .text-body {
+        @apply text-gray-600 leading-relaxed;
+    }
+
+    .input-search {
+        @apply w-full bg-gray-100 rounded-lg py-2 px-4 pl-4 pr-12 outline-none focus:ring-2 focus:ring-brand-orange transition-shadow text-brand-brown;
+    }
+}
